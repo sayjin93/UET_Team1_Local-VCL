@@ -1,0 +1,1 @@
+Ne kete folder, do vendosen detyrat / zgjidhja e api te sistemit.

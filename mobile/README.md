@@ -1,0 +1,1 @@
+Ne kete folder, do vendosen detyrat / zgjidhja e aplikacionit mobile te sistemit.
