@@ -9,7 +9,6 @@ Welcome to the official repository for the Real Estate Application developed by 
 - [Technology Stack](#technology-stack)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
 
@@ -57,14 +56,25 @@ This project is a part of the UET Team 1 Local-VLC initiative to develop innovat
 
 2. **Install dependencies:**
 
+   #### For `api`:
+
    ```bash
-   cd api (or client)
+   cd api
+   npm install
+   ```
+
+   #### For `client`:
+
+   ```bash
+   cd client
    npm install
    ```
 
 3. **Set up environment variables:**
 
-   Create a `.env` file in the root directory and add the following variables:
+   Create a `.env` file in both the `api` and `client` directories and add the following variables:
+
+   ##### For `api`:
 
    ```env
    PORT=your_api_port
@@ -73,10 +83,27 @@ This project is a part of the UET Team 1 Local-VLC initiative to develop innovat
    GOOGLE_MAPS_API_KEY=your_google_maps_api_key
    ```
 
+   ##### For `client`:
+
+   ```env
+   REACT_APP_API_URL=your_api_url
+   REACT_APP_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
+   ```
+
 4. **Run the development server:**
 
+   #### For `api`:
+
    ```bash
+   cd api
    npm run dev
+   ```
+
+   #### For `client`:
+
+   ```bash
+   cd client
+   npm start
    ```
 
 5. **For mobile application:**
@@ -88,18 +115,6 @@ This project is a part of the UET Team 1 Local-VLC initiative to develop innovat
 - **Web Application**: Open your browser and navigate to `http://localhost:3000`
 - **Mobile Application**: Use an emulator or physical device to run the application using Expo or directly on Android/iOS.
 
-## Contributing
-
-We welcome contributions from the community! Please follow these steps to contribute:
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Make your changes and commit them (`git commit -m 'Add new feature'`).
-4. Push to the branch (`git push origin feature-branch`).
-5. Create a Pull Request.
-
-Please make sure your code adheres to our coding standards and includes appropriate tests.
-
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
@@ -110,9 +125,3 @@ For any inquiries or feedback, please contact us at:
 
 - **Email**: jkruja2@uet.edu.al
 - **GitHub Issues**: [Create an Issue](https://github.com/sayjin93/UET_Team1_Local-VCL/issues)
-
----
-
-Thank you for your interest in our project! We hope this application serves as a valuable tool in the real estate industry.
-
----
