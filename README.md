@@ -67,8 +67,9 @@ This project is a part of the UET Team 1 Local-VLC initiative to develop innovat
    Create a `.env` file in the root directory and add the following variables:
 
    ```env
-   MONGO_URI=your_mongo_db_connection_string
-   JWT_SECRET=your_jwt_secret
+   PORT=your_api_port
+   JWT_SECRET_KEY=your_jwt_secret
+   DATABASE_URL=your_mongo_db_connection_string
    GOOGLE_MAPS_API_KEY=your_google_maps_api_key
    ```
 
