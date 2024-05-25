@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./login.scss";
 import { Link, useNavigate } from "react-router-dom";
 import apiRequest from "@/lib/apiRequest";
+import { AuthContext } from "@/context/authContext";
 
 function Login() {
   //#region constants
   const navigate = useNavigate();
+  //#endregion
+
+  //#region context
+  const { updateUser } = useContext(AuthContext);
   //#endregion
 
   //#region states
@@ -31,7 +36,7 @@ function Login() {
         password,
       });
 
-      localStorage.setItem("user", JSON.stringify(res.data));
+      updateUser(res.data);
 
       navigate("/");
     } catch (err) {

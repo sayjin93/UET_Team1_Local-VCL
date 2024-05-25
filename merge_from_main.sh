@@ -37,8 +37,8 @@ git checkout main
 git pull origin main
 
 # Merge main into the target branches
-merge_branch "api"
-merge_branch "client"
+# merge_branch "api"
+# merge_branch "client"
 merge_branch "mobile"
 
 # Switch back to the main branch
@@ -47,8 +47,8 @@ echo "Merge process completed."
 
 # Push changes to remote branches
 echo "Pushing changes to remote branches..."
-git push origin api
-git push origin client
+# git push origin api
+# git push origin client
 git push origin mobile
 
 echo "All changes have been pushed to remote branches."
