@@ -8,8 +8,6 @@ function SinglePage() {
   // Make post data request with react-router-dom
   const post = useLoaderData();
 
-  console.log(post);
-
   return (
     <div className="singlePage">
       <div className="details">
