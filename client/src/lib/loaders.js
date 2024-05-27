@@ -12,3 +12,9 @@ export const listPageLoader = ({ request, params }) => {
 
     return defer({ postResponse: postPromise });
 }
+
+export const profilePageLoader = () => {
+    const postPromise = apiRequest("/users/profilePosts");
+
+    return defer({ postResponse: postPromise });
+}
