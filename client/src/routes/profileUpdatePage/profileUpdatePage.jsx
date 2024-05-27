@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import "./profileUpdatePage.scss";
-import { AuthContext } from "@/context/authContext";
+import { AuthContext } from "@/context/AuthContext";
 import apiRequest from "@/lib/apiRequest";
 import { useNavigate } from "react-router-dom";
 import UploadWidget from "@/components/uploadWidget/UploadWidget";
@@ -10,7 +10,7 @@ function ProfileUpdatePage() {
   const navigate = useNavigate();
   //#endregion
 
-  //#region context
+  //#region contexts
   const { currentUser, updateUser } = useContext(AuthContext);
   //#endregion
 

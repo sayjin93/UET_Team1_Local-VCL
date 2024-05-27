@@ -4,7 +4,7 @@ import List from "../../components/list/List";
 import "./profilePage.scss";
 import { Link, useNavigate, useLoaderData, Await } from "react-router-dom";
 import { Suspense, useContext } from "react";
-import { AuthContext } from "@/context/authContext";
+import { AuthContext } from "@/context/AuthContext";
 
 function ProfilePage() {
   //#region constants
@@ -12,7 +12,7 @@ function ProfilePage() {
   const data = useLoaderData();
   //#endregion
 
-  //#region context
+  //#region contexts
   const { updateUser, currentUser } = useContext(AuthContext);
   //#endregion
 

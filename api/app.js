@@ -16,7 +16,7 @@ app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
-app.get('/', (req, res) => {
+app.get('/', (res) => {
     res.json({
         message: '👋 UET_Team1_local-VLC API is working ',
     });

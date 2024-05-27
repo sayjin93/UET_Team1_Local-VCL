@@ -4,14 +4,14 @@ import Map from "../../components/map/Map";
 import { redirect, useLoaderData } from "react-router-dom";
 import DOMPurify from "dompurify";
 import { useContext, useState } from "react";
-import { AuthContext } from "@/context/authContext";
+import { AuthContext } from "@/context/AuthContext";
 import apiRequest from "@/lib/apiRequest";
 
 function SinglePage() {
   // Make post data request with react-router-dom
   const post = useLoaderData();
 
-  //#region context
+  //#region contexts
   const { currentUser } = useContext(AuthContext);
   //#endregion
 
