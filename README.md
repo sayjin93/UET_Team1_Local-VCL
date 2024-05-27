@@ -28,7 +28,7 @@ This project is a part of the UET Team 1 Local-VLC initiative to develop innovat
 
 ## Technology Stack
 
-- **Frontend**: 
+- **Frontend**:
   - Web: React.js
   - Mobile: Java
 - **Backend**: Node.js, Express.js
@@ -83,16 +83,16 @@ This project is a part of the UET Team 1 Local-VLC initiative to develop innovat
    GOOGLE_MAPS_API_KEY=your_google_maps_api_key
    ```
 
-   ##### For `client`:
-
-   ```env
-   REACT_APP_API_URL=your_api_url
-   REACT_APP_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
-   ```
-
 4. **Run the development server:**
 
    #### For `api`:
+
+   ```bash
+   cd api
+   npm run dev
+   ```
+
+   #### For `socket`:
 
    ```bash
    cd api
@@ -103,7 +103,7 @@ This project is a part of the UET Team 1 Local-VLC initiative to develop innovat
 
    ```bash
    cd client
-   npm start
+   npm run dev
    ```
 
 5. **For mobile application:**

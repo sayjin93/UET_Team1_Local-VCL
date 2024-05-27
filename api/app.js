@@ -19,7 +19,7 @@ app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
-app.get('/', (res) => {
+app.get('/', (req, res) => {
     res.json({
         message: '👋 UET_Team1_local-VLC API is working ',
     });
@@ -35,5 +35,5 @@ app.use("/api/messages", messageRoute);
 
 // Listener
 app.listen(port, () => {
-    console.log(`Server listening on ${port}`);
-})
+    console.log(`\x1b[36m%s\x1b[0m`, `Server listening on: http://localhost:${port}/`);
+});
