@@ -15,6 +15,10 @@ export const listPageLoader = ({ request, params }) => {
 
 export const profilePageLoader = () => {
     const postPromise = apiRequest("/users/profilePosts");
+    const chatPromise = apiRequest("/chats");
 
-    return defer({ postResponse: postPromise });
+    return defer({
+        postResponse: postPromise,
+        chatResponse: chatPromise
+    });
 }

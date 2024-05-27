@@ -18,7 +18,8 @@
     "react-leaflet": "^4.2.1",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.23.1",
-    "sass": "^1.71.1"
+    "sass": "^1.71.1",
+    "timeago.js": "^4.0.2"
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^5.1.0",
