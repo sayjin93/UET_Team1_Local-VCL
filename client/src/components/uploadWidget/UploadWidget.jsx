@@ -26,7 +26,6 @@ function UploadWidget({ uwConfig, setState }) {
 
   const initializeCloudinaryWidget = () => {
     if (loaded) {
-      // @ts-ignore
       var myWidget = window.cloudinary.createUploadWidget(
         uwConfig,
         (error, result) => {
