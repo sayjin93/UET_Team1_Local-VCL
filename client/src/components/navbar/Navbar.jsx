@@ -17,7 +17,15 @@ function Navbar() {
   const fetch = useNotificationStore((state) => state.fetch);
   const number = useNotificationStore((state) => state.number);
 
-  fetch();
+  if (currentUser) {
+    fetch();
+  }
+  //#endregion
+
+  //#region functions
+  const handleClickMobileMenu = () => {
+    setOpen((prev) => !prev);
+  };
   //#endregion
 
   return (
@@ -44,10 +52,10 @@ function Navbar() {
           </div>
         ) : (
           <>
-            <a href="/login">Sign in</a>
-            <a href="/register" className="register">
+            <Link to="/login">Sign in</Link>
+            <Link to="/register" className="register">
               Sign up
-            </a>
+            </Link>
           </>
         )}
         <div className="menuIcon">
@@ -58,12 +66,33 @@ function Navbar() {
           />
         </div>
         <div className={open ? "menu active" : "menu"}>
-          <a href="/">Home</a>
-          <a href="/">About</a>
-          <a href="/">Contact</a>
-          <a href="/">Agents</a>
-          <a href="/">Sign in</a>
-          <a href="/">Sign up</a>
+          <Link to="/" onClick={handleClickMobileMenu}>
+            Home
+          </Link>
+          <Link to="/list" onClick={handleClickMobileMenu}>
+            List
+          </Link>
+          <Link to="/" onClick={handleClickMobileMenu}>
+            About
+          </Link>
+          <Link to="/" onClick={handleClickMobileMenu}>
+            Contact
+          </Link>
+          {!currentUser && (
+            <Link to="/login" onClick={handleClickMobileMenu}>
+              Sign in
+            </Link>
+          )}
+          {!currentUser && (
+            <Link to="/register" onClick={handleClickMobileMenu}>
+              Sign up
+            </Link>
+          )}
+          {currentUser && (
+            <Link to="/profile" onClick={handleClickMobileMenu}>
+              Profile
+            </Link>
+          )}
         </div>
       </div>
     </nav>

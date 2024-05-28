@@ -1,3 +1,5 @@
+@import "../../responsive.scss";
+
 .register {
   height: 100%;
   display: flex;
@@ -51,11 +53,18 @@
   .imgContainer {
     flex: 2;
     background-color: #fcf5f3;
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
+
+    @include md {
+      display: none;
+    }
+
     img {
-      width: 100%;
+      width: 115%;
+      position: absolute;
+      right: 0;
     }
   }
 }
