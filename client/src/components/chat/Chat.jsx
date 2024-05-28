@@ -5,7 +5,7 @@ import { SocketContext } from "@/context/SocketContext";
 import apiRequest from "@/lib/apiRequest";
 import { format } from "timeago.js";
 
-// import { useNotificationStore } from "../../lib/notificationStore";
+import { useNotificationStore } from "@/lib/notificationStore";
 
 function Chat({ chats }) {
   //#region contexts
@@ -17,23 +17,24 @@ function Chat({ chats }) {
   const [chat, setChat] = useState(null);
   //#endregion
 
+  //#region zustand actions
+  const decrease = useNotificationStore((state) => state.decrease);
+  //#endregion
+
   //#region refs
   const messageEndRef = useRef();
   //#endregion
-
-  // const decrease = useNotificationStore((state) => state.decrease);
-
-  // useEffect(() => {
-  //   messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  // }, [chat]);
 
   //#region functions
   const handleOpenChat = async (id, receiver) => {
     try {
       const res = await apiRequest("/chats/" + id);
-      // if (!res.data.seenBy.includes(currentUser.id)) {
-      //   decrease();
-      // }
+
+      //decrease number when opening chat
+      if (!res.data.seenBy.includes(currentUser.id)) {
+        decrease();
+      }
+
       setChat({ ...res.data, receiver });
     } catch (err) {
       console.log(err);
@@ -63,6 +64,10 @@ function Chat({ chats }) {
 
   //#region useEffect
   useEffect(() => {
+    messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [chat]);
+
+  useEffect(() => {
     const read = async () => {
       try {
         await apiRequest.put("/chats/read/" + chat.id);
@@ -83,7 +88,7 @@ function Chat({ chats }) {
       socket.off("getMessage");
     };
   }, [socket, chat]);
-//#endregion
+  //#endregion
 
   return (
     <div className="chat">
@@ -121,15 +126,9 @@ function Chat({ chats }) {
           <div className="center">
             {chat.messages.map((message) => (
               <div
-                className="chatMessage"
-                style={{
-                  alignSelf:
-                    message.userId === currentUser.id
-                      ? "flex-end"
-                      : "flex-start",
-                  textAlign:
-                    message.userId === currentUser.id ? "right" : "left",
-                }}
+                className={`chatMessage ${
+                  message.userId === currentUser.id ? "own" : "other"
+                }`}
                 key={message.id}
               >
                 <p>{message.text}</p>
