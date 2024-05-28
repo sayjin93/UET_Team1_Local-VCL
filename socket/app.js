@@ -6,7 +6,6 @@ const port = process.env.SOCKET_PORT || 4000;
 const io = new Server({
     cors: {
         origin: process.env.CLIENT_URL,
-
     },
 });
 
