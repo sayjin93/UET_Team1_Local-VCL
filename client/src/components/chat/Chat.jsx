@@ -22,7 +22,7 @@ function Chat({ chats }) {
   //#endregion
 
   //#region refs
-  const messageEndRef = useRef();
+  const messageEndRef = useRef(null);
   //#endregion
 
   //#region functions
@@ -64,7 +64,7 @@ function Chat({ chats }) {
 
   //#region useEffect
   useEffect(() => {
-    messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    messageEndRef?.current?.scrollIntoView({ behavior: "smooth" });
   }, [chat]);
 
   useEffect(() => {

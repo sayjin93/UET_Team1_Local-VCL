@@ -20,6 +20,7 @@ export const getPosts = async (req, res) => {
                 }
             }
         });
+
         res.status(200).json(posts);
     } catch (err) {
         console.log(err);

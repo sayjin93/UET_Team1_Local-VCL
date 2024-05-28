@@ -72,7 +72,7 @@ This project is a part of the UET Team 1 Local-VLC initiative to develop innovat
 
 3. **Set up environment variables:**
 
-   Create a `.env` file in both the `api` and `client` directories and add the following variables:
+   Create a `.env` file in `api`, `client` and `socket` directories and add the following variables:
 
    ##### For `api`:
 
@@ -80,7 +80,21 @@ This project is a part of the UET Team 1 Local-VLC initiative to develop innovat
    PORT=your_api_port
    JWT_SECRET_KEY=your_jwt_secret
    DATABASE_URL=your_mongo_db_connection_string
-   GOOGLE_MAPS_API_KEY=your_google_maps_api_key
+   CLIENT_URL=your_client_url
+   ```
+
+   ##### For `client`:
+
+   ```env
+   VITE_SOCKET_URL=your_client_url
+   VITE_API_URL=your_api_url
+   ```
+
+   ##### For `socket`:
+
+   ```env
+   SOCKET_PORT=your_socket_port
+   CLIENT_URL=your_api_url
    ```
 
 4. **Run the development server:**

@@ -1,10 +1,15 @@
-import apiRequest from "@/lib/apiRequest";
-import Chat from "../../components/chat/Chat";
-import List from "../../components/list/List";
 import "./profilePage.scss";
-import { Link, useNavigate, useLoaderData, Await } from "react-router-dom";
+
 import { Suspense, useContext } from "react";
+import { Link, useNavigate, useLoaderData, Await } from "react-router-dom";
+
 import { AuthContext } from "@/context/AuthContext";
+import apiRequest from "@/lib/apiRequest";
+
+import CardSekelton from "@/components/card/CardSekelton";
+import Chat from "@/components/chat/Chat";
+import List from "@/components/list/List";
+import Skeleton from "@/components/skeleton/Skeleton";
 
 function ProfilePage() {
   //#region constants
@@ -62,7 +67,7 @@ function ProfilePage() {
               <button>Create New Post</button>
             </Link>
           </div>
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense fallback={<CardSekelton times={3} />}>
             <Await
               resolve={data.postResponse}
               errorElement={<p>Error loading posts!</p>}
@@ -74,7 +79,7 @@ function ProfilePage() {
           <div className="title">
             <h1>Saved List</h1>
           </div>
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense fallback={<CardSekelton />}>
             <Await
               resolve={data.postResponse}
               errorElement={<p>Error loading posts!</p>}
@@ -86,7 +91,22 @@ function ProfilePage() {
       </div>
       <div className="chatContainer">
         <div className="wrapper">
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense
+            fallback={
+              <div className="chat">
+                <div className="messages">
+                  <h1>Messages</h1>
+                  <Skeleton
+                    times={3}
+                    style={{
+                      height: "80px",
+                      borderRadius: "10px",
+                    }}
+                  />
+                </div>
+              </div>
+            }
+          >
             <Await
               resolve={data.chatResponse}
               errorElement={<p>Error loading chats!</p>}
