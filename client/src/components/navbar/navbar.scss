@@ -60,7 +60,7 @@ nav {
 
     a {
       padding: 12px 24px;
-      margin: 20px;
+      margin: 15px;
     }
 
     .user {
@@ -73,7 +73,7 @@ nav {
         height: 40px;
         border-radius: 50%;
         object-fit: cover;
-        margin-right: 20px;
+        margin-right: 10px;
       }
 
       span {
@@ -134,17 +134,19 @@ nav {
       height: 100vh;
       width: 50%;
       transition: all 1s ease;
-      display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       font-size: 24px;
 
       &.active {
+        display: flex;
         right: 0;
       }
 
       @include sm {
+        display: none;
+
         a {
           display: initial;
         }

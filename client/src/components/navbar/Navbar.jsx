@@ -23,14 +23,14 @@ function Navbar() {
   return (
     <nav>
       <div className="left">
-        <a href="/" className="logo">
+        <Link to="/" className="logo">
           <img src="/logo.png" alt="" />
           <span>UET Team1 VLC</span>
-        </a>
-        <a href="/">Home</a>
-        <a href="/">About</a>
-        <a href="/">Contact</a>
-        <a href="/">Agents</a>
+        </Link>
+        <Link to="/">Home</Link>
+        <Link to="/list">List</Link>
+        <Link to="/">About</Link>
+        <Link to="/">Contact</Link>
       </div>
       <div className="right">
         {currentUser ? (

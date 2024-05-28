@@ -30,8 +30,9 @@
     border: 1px solid #999;
     display: flex;
     justify-content: space-between;
-    height: 64px;
+    // height: 64px;
     gap: 5px;
+    margin-bottom: 20px;
 
     @include sm {
       flex-direction: column;
@@ -42,6 +43,7 @@
       border: none;
       padding: 0px 10px;
       width: 200px;
+      height: 64px;
 
       @include lg {
         padding: 0px 5px;

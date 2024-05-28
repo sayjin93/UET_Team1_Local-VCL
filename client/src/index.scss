@@ -1,7 +1,12 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
 }
 
 a {
@@ -9,7 +14,7 @@ a {
   color: inherit;
 }
 
-body{
+body {
   font-family: "Lato", sans-serif;
   overflow: hidden;
 }
