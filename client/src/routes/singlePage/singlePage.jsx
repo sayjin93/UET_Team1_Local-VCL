@@ -1,15 +1,17 @@
 import "./singlePage.scss";
 import Slider from "../../components/slider/Slider";
 import Map from "../../components/map/Map";
-import { redirect, useLoaderData } from "react-router-dom";
+import { redirect, useLoaderData, useNavigate } from "react-router-dom";
 import DOMPurify from "dompurify";
 import { useContext, useState } from "react";
 import { AuthContext } from "@/context/AuthContext";
 import apiRequest from "@/lib/apiRequest";
 
 function SinglePage() {
-  // Make post data request with react-router-dom
+  //#region constants
+  const navigate = useNavigate();
   const post = useLoaderData();
+  //#endregion
 
   //#region contexts
   const { currentUser } = useContext(AuthContext);
@@ -20,6 +22,21 @@ function SinglePage() {
   //#endregion
 
   //#region functions
+  const handleAddToChat = async () => {
+    if (!currentUser) {
+      redirect("/login");
+    }
+
+    try {
+      await apiRequest.post("/chats", {
+        receiverId: post.userId,
+      });
+      navigate("/profile");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const handleSave = async () => {
     setsaved((prev) => !prev);
 
@@ -147,9 +164,16 @@ function SinglePage() {
             <Map items={[post]} />
           </div>
           <div className="buttons">
-            <button>
-              <img src="/chat.png" alt="" />
-              Send a Message
+            <button
+              onClick={handleAddToChat}
+              disabled={post.userId === currentUser.id}
+            >
+              {post.userId === currentUser.id ? (
+                <img src="/edit.png" alt="" style={{ opacity: 0.3 }} />
+              ) : (
+                <img src="/chat.png" alt="" />
+              )}
+              {post.userId === currentUser.id ? "Edit Post" : "Write a message"}
             </button>
             <button
               onClick={handleSave}

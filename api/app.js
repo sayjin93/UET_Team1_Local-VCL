@@ -1,7 +1,9 @@
 import express from "express";
-import cors from "cors";
 import cookieParser from "cookie-parser";
 import 'dotenv/config'
+
+// Middlewares
+import corsCorsMiddleware from "./middleware/corsMiddleware.js";
 
 //Routes Imports
 import authRoute from "./routes/auth.route.js"
@@ -14,9 +16,11 @@ import messageRoute from "./routes/message.route.js"
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors({ origin: '*', credentials: true }));
+// app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+
 app.use(express.json());
 app.use(cookieParser());
+app.use(corsCorsMiddleware);
 
 app.get('/', (req, res) => {
     res.json({
