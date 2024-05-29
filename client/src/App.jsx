@@ -1,8 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AnimatedCursor from "react-animated-cursor";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import {
   listPageLoader,
   singlePageLoader,
   profilePageLoader,
+  homePageLoader,
 } from "./lib/loaders";
 
 import { Layout, RequireAuth } from "./routes/layout/layout";
@@ -16,6 +22,7 @@ import Login from "./routes/login/login";
 import Register from "./routes/register/register";
 import ProfileUpdatePage from "./routes/profileUpdatePage/profileUpdatePage";
 import NewPostPage from "./routes/newPostPage/newPostPage";
+import AboutPage from "./routes/aboutPage/AboutPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -26,6 +33,7 @@ function App() {
         {
           path: "/",
           element: <HomePage />,
+          loader: homePageLoader,
         },
         {
           path: "/list",
@@ -36,6 +44,10 @@ function App() {
           path: "/:id",
           element: <SinglePage />,
           loader: singlePageLoader,
+        },
+        {
+          path: "/about",
+          element: <AboutPage />,
         },
         {
           path: "/login",
@@ -68,7 +80,13 @@ function App() {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      <ToastContainer />
+      <AnimatedCursor color="48, 74, 133" />
+    </>
+  );
 }
 
 export default App;

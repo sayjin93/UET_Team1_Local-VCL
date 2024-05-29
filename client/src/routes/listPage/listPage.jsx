@@ -3,6 +3,9 @@ import "./listPage.scss";
 import { Suspense } from "react";
 import { Await, useLoaderData } from "react-router-dom";
 
+import SimpleBar from "simplebar-react";
+import "simplebar-react/dist/simplebar.min.css";
+
 import CardSekelton from "@/components/card/CardSekelton";
 import Filter from "@/components/filter/Filter";
 import Card from "@/components/card/Card";
@@ -14,22 +17,24 @@ function ListPage() {
   return (
     <div className="listPage">
       <div className="listContainer">
-        <div className="wrapper">
-          <Filter />
+        <SimpleBar style={{ height: "100%" }}>
+          <div className="wrapper">
+            <Filter />
 
-          <Suspense fallback={<CardSekelton times={3} />}>
-            <Await
-              resolve={data.postResponse}
-              errorElement={<p>Error loading posts!</p>}
-            >
-              {(postResponse) =>
-                postResponse.data.map((post) => (
-                  <Card key={post.id} item={post} />
-                ))
-              }
-            </Await>
-          </Suspense>
-        </div>
+            <Suspense fallback={<CardSekelton times={3} />}>
+              <Await
+                resolve={data.postResponse}
+                errorElement={<p>Error loading posts!</p>}
+              >
+                {(postResponse) =>
+                  postResponse.data.map((post) => (
+                    <Card key={post.id} item={post} />
+                  ))
+                }
+              </Await>
+            </Suspense>
+          </div>
+        </SimpleBar>
       </div>
       <div className="mapContainer">
         <Suspense

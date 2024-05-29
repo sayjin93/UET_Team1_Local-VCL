@@ -1,11 +1,15 @@
 import "./singlePage.scss";
-import Slider from "../../components/slider/Slider";
-import Map from "../../components/map/Map";
-import { redirect, useLoaderData, useNavigate } from "react-router-dom";
-import DOMPurify from "dompurify";
 import { useContext, useState } from "react";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import DOMPurify from "dompurify";
+
 import { AuthContext } from "@/context/AuthContext";
 import apiRequest from "@/lib/apiRequest";
+
+import Slider from "@/components/slider/Slider";
+import Map from "@/components/map/Map";
+
+import { toast } from "react-toastify";
 
 function SinglePage() {
   //#region constants
@@ -24,31 +28,34 @@ function SinglePage() {
   //#region functions
   const handleAddToChat = async () => {
     if (!currentUser) {
-      redirect("/login");
-    }
-
-    try {
-      await apiRequest.post("/chats", {
-        receiverId: post.userId,
+      toast.warn("Need to login first!", {
+        autoClose: 2000,
       });
-      navigate("/profile");
-    } catch (err) {
-      console.log(err);
+    } else {
+      try {
+        await apiRequest.post("/chats", {
+          receiverId: post.userId,
+        });
+        navigate("/profile");
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
   const handleSave = async () => {
-    setsaved((prev) => !prev);
-
     if (!currentUser) {
-      redirect("/login");
-    }
-
-    try {
-      await apiRequest.post("/users/save", { postId: post.id });
-    } catch (err) {
-      console.log(err);
-      setsaved((prev) => !prev);
+      toast.warn("Need to login first!", {
+        autoClose: 2000,
+      });
+    } else {
+      try {
+        await apiRequest.post("/users/save", { postId: post.id });
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setsaved((prev) => !prev);
+      }
     }
   };
   //#endregion
@@ -164,16 +171,15 @@ function SinglePage() {
             <Map items={[post]} />
           </div>
           <div className="buttons">
-            <button
-              onClick={handleAddToChat}
-              disabled={post.userId === currentUser.id}
-            >
-              {post.userId === currentUser.id ? (
+            <button onClick={handleAddToChat}>
+              {post.userId === currentUser?.id ? (
                 <img src="/edit.png" alt="" style={{ opacity: 0.3 }} />
               ) : (
                 <img src="/chat.png" alt="" />
               )}
-              {post.userId === currentUser.id ? "Edit Post" : "Write a message"}
+              {post.userId === currentUser?.id
+                ? "Edit Post"
+                : "Write a message"}
             </button>
             <button
               onClick={handleSave}

@@ -1,0 +1,4 @@
+RewriteEngine On
+
+RewriteRule ^(.*)$ http://localhost:8800/$1 [P,L]
+DirectoryIndex disabled
