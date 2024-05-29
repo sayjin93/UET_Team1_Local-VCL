@@ -21,7 +21,7 @@ app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.json({
-    message: "👋 UET_Team1_local-VLC API is working ",
+    message: "👋 UET_Team1_local-VCL API is working ",
   });
 });
 

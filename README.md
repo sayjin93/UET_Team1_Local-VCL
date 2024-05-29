@@ -1,6 +1,6 @@
-# Real Estate Application - UET Team 1 Local-VLC
+# Real Estate Application - UET Team 1 Local-VCL
 
-Welcome to the official repository for the Real Estate Application developed by UET Team 1 Local-VLC. This project aims to create a comprehensive web and mobile application to streamline real estate transactions and provide a seamless user experience for buyers, sellers, and agents.
+Welcome to the official repository for the Real Estate Application developed by UET Team 1 Local-VCL. This project aims to create a comprehensive web and mobile application to streamline real estate transactions and provide a seamless user experience for buyers, sellers, and agents.
 
 ## Table of Contents
 
@@ -14,7 +14,7 @@ Welcome to the official repository for the Real Estate Application developed by 
 
 ## Introduction
 
-This project is a part of the UET Team 1 Local-VLC initiative to develop innovative solutions in the real estate sector. Our application aims to simplify property listings, enhance search capabilities, and provide users with the tools they need to make informed decisions.
+This project is a part of the UET Team 1 Local-VCL initiative to develop innovative solutions in the real estate sector. Our application aims to simplify property listings, enhance search capabilities, and provide users with the tools they need to make informed decisions.
 
 ## Features
 

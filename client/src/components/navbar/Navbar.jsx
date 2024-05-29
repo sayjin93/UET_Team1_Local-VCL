@@ -33,7 +33,7 @@ function Navbar() {
       <div className="left">
         <Link to="/" className="logo">
           <img src="/logo.png" alt="" />
-          <span>UET Team1 VLC</span>
+          <span>UET Team1 VCL</span>
         </Link>
         <Link to="/">Home</Link>
         <Link to="/list">List</Link>

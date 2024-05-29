@@ -40,7 +40,7 @@ const AboutPage = () => {
         <div className="about-container">
           <h1 className="about-title">About Us</h1>
           <p className="about-text">
-            Welcome to Team 1 VLC from the University of Tirana. Our team is
+            Welcome to Team 1 VCL from the University of Tirana. Our team is
             dedicated to providing the best real estate solutions tailored to
             your needs. With over 12 years of experience and numerous awards, we
             pride ourselves on our commitment to excellence and customer
