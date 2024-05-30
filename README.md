@@ -28,11 +28,10 @@ This project is a part of the UET Team 1 Local-VCL initiative to develop innovat
 
 ## Technology Stack
 
-- **Frontend**:
-  - Web: React.js
-  - Mobile: Java
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB
+- **Client**: React.js
+- **API**: Node.js, Express.js
+- **Mobile**: Java
+- **Database**: Prisma ORM
 - **Authentication**: JWT (JSON Web Tokens)
 - **Real-Time Communication**: Socket.io
 - **Maps Integration**: Google Maps API
@@ -64,6 +63,13 @@ This project is a part of the UET Team 1 Local-VCL initiative to develop innovat
    ```
 
    #### For `client`:
+
+   ```bash
+   cd client
+   npm install
+   ```
+
+   #### For `socket`:
 
    ```bash
    cd client
@@ -106,13 +112,6 @@ This project is a part of the UET Team 1 Local-VCL initiative to develop innovat
    npm run dev
    ```
 
-   #### For `socket`:
-
-   ```bash
-   cd api
-   npm run dev
-   ```
-
    #### For `client`:
 
    ```bash
@@ -120,22 +119,29 @@ This project is a part of the UET Team 1 Local-VCL initiative to develop innovat
    npm run dev
    ```
 
+   #### For `socket`:
+
+   ```bash
+   cd api
+   npm run dev
+   ```
+
 5. **For mobile application:**
 
-   Navigate to the `mobile` directory and follow the same steps to install dependencies and run the development server.
+   Open `mobile` directory in Android Studio or any other IDE and sync with gradle.
 
 ## Usage
 
-- **Web Application**: Open your browser and navigate to `http://localhost:3000`
-- **Mobile Application**: Use an emulator or physical device to run the application using Expo or directly on Android/iOS.
+- **Web Application**: Open your browser and navigate to `http://localhost:your_port` (by default: 8802)
+- **Mobile Application**: Use an emulator or physical device to run the application using Expo or directly on Android.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE.txt) file for more details.
 
 ## Contact
 
-For any inquiries or feedback, please contact us at:
+For any inquiries or feedback, please contact at:
 
 - **Email**: jkruja2@uet.edu.al
 - **GitHub Issues**: [Create an Issue](https://github.com/sayjin93/UET_Team1_Local-VCL/issues)
