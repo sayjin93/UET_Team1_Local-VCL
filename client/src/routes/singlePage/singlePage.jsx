@@ -115,13 +115,6 @@ function SinglePage() {
                 )}
               </div>
             </div>
-            <div className="feature">
-              <img src="/fee.png" alt="" />
-              <div className="featureText">
-                <span>Income Fees</span>
-                <p>{post.postDetail.income}</p>
-              </div>
-            </div>
           </div>
           <p className="title">Sizes</p>
           <div className="sizes">
