@@ -30,7 +30,12 @@
     },
     {
       "label": "Run All",
-      "dependsOn": ["Run API", "Run Socket", "Run Client"]
+      "dependsOn": [
+        "Run API",
+        "Run Socket",
+        "Run Client"
+      ],
+      "problemMatcher": []
     },
     {
       "label": "Stop All",
