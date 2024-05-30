@@ -6,6 +6,11 @@ import "simplebar-react/dist/simplebar.min.css";
 
 const teamMembers = [
   {
+    name: "Marina Niklekaj",
+    role: "E-Tutor",
+    image: "noavatar.jpg",
+  },
+  {
     name: "Jurgen Kruja",
     role: "Project Manager & Full Stack Developer",
     image: "jurgen.jpg",
@@ -13,7 +18,7 @@ const teamMembers = [
   {
     name: "Dionis Debrova",
     role: "Public Relations & Mobile Developer",
-    image: "noavatar.jpg",
+    image: "dionis.jpeg",
   },
   {
     name: "Read Danjolli",
