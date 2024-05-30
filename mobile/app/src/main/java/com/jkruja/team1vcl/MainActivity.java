@@ -1,5 +1,7 @@
-package com.jkruja.team1vcl;
+```java
+        package com.jkruja.team1vcl;
 
+// Import necessary Android and Java packages
 import android.app.DownloadManager;
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -33,38 +35,44 @@ public class MainActivity extends ComponentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Initialize the WebView and set its settings
         mWebView = findViewById(R.id.activity_main_webview);
         WebSettings webSettings = mWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        webSettings.setDomStorageEnabled(true);
+        webSettings.setJavaScriptEnabled(true); // Enable JavaScript
+        webSettings.setDomStorageEnabled(true); // Enable DOM storage
+
+        // Set a custom WebViewClient to handle URL loading and page events
         mWebView.setWebViewClient(new HelloWebViewClient());
 
+        // Set a download listener to handle file downloads from the WebView
         mWebView.setDownloadListener((url, userAgent, contentDisposition, mimetype, contentLength) -> {
             DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-            request.setMimeType(mimetype);
+            request.setMimeType(mimetype); // Set the MIME type
             request.addRequestHeader("cookie", CookieManager.getInstance().getCookie(url));
-            request.addRequestHeader("User-Agent", userAgent);
+            request.addRequestHeader("User-Agent", userAgent); // Add headers
             request.setDescription("Downloading file...");
-            request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimetype));
-            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, URLUtil.guessFileName(url, contentDisposition, mimetype));
+            request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimetype)); // Set the download file name
+            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED); // Show notification on download completion
+            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, URLUtil.guessFileName(url, contentDisposition, mimetype)); // Set the download destination
             DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-            dm.enqueue(request);
-            Toast.makeText(getApplicationContext(), "Downloading File", Toast.LENGTH_LONG).show();
+            dm.enqueue(request); // Enqueue the download request
+            Toast.makeText(getApplicationContext(), "Downloading File", Toast.LENGTH_LONG).show(); // Show a toast message
         });
 
+        // Check network availability and load the appropriate URL
         if (isNetworkAvailable()) {
-            mWebView.loadUrl("https://team1.jkruja.com/");
+            mWebView.loadUrl("https://team1.jkruja.com/"); // Load the online URL
         } else {
-            mWebView.loadUrl("file:///android_asset/offline.html");
+            mWebView.loadUrl("file:///android_asset/offline.html"); // Load the offline page
         }
 
+        // Define a network callback to handle network changes
         networkCallback = new NetworkCallback() {
             @Override
             public void onAvailable(@NonNull Network network) {
                 runOnUiThread(() -> {
                     if (mWebView.getUrl() != null && !mWebView.getUrl().startsWith("file:///android_asset")) {
-                        mWebView.loadUrl("https://team1.jkruja.com/");
+                        mWebView.loadUrl("https://team1.jkruja.com/"); // Reload the online URL when network becomes available
                     }
                 });
             }
@@ -73,12 +81,13 @@ public class MainActivity extends ComponentActivity {
             public void onLost(@NonNull Network network) {
                 runOnUiThread(() -> {
                     if (mWebView.getUrl() != null) {
-                        mWebView.loadUrl("file:///android_asset/offline.html");
+                        mWebView.loadUrl("file:///android_asset/offline.html"); // Load the offline page when network is lost
                     }
                 });
             }
         };
 
+        // Register the network callback to listen for network changes
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         connectivityManager.registerDefaultNetworkCallback(networkCallback);
 
@@ -87,9 +96,9 @@ public class MainActivity extends ComponentActivity {
             @Override
             public void handleOnBackPressed() {
                 if (mWebView.canGoBack()) {
-                    mWebView.goBack();
+                    mWebView.goBack(); // Go back in WebView history
                 } else {
-                    finish(); // Use finish() to close the activity instead of super.onBackPressed()
+                    finish(); // Close the activity
                 }
             }
         });
@@ -106,6 +115,7 @@ public class MainActivity extends ComponentActivity {
         }, "Android");
     }
 
+    // Method to check network availability
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         Network nw = connectivityManager.getActiveNetwork();
@@ -114,10 +124,11 @@ public class MainActivity extends ComponentActivity {
         return actNw != null && (actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) || actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) || actNw.hasTransport(NetworkCapabilities.TRANSPORT_VPN));
     }
 
+    // Custom WebViewClient to handle URL loading and page events
     private static class HelloWebViewClient extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-            view.loadUrl(request.getUrl().toString());
+            view.loadUrl(request.getUrl().toString()); // Load the requested URL
             return true;
         }
 
@@ -132,9 +143,11 @@ public class MainActivity extends ComponentActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        // Unregister the network callback to avoid memory leaks
         if (networkCallback != null) {
             ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             connectivityManager.unregisterNetworkCallback(networkCallback);
         }
     }
 }
+```
