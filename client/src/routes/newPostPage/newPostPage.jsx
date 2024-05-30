@@ -47,7 +47,6 @@ function NewPostPage() {
           desc: value,
           utilities: inputs.utilities,
           pet: inputs.pet,
-          income: inputs.income,
           size: Number(inputs.size),
           school: Number(inputs.school),
           bus: Number(inputs.bus),
@@ -80,7 +79,7 @@ function NewPostPage() {
               <label htmlFor="price">Price</label>
               <input id="price" name="price" type="number" />
             </div>
-            <div className="item">
+            <div className="item sm-100">
               <label htmlFor="address">Address</label>
               <input id="address" name="address" type="text" />
             </div>
@@ -88,9 +87,18 @@ function NewPostPage() {
               <label htmlFor="desc">Description</label>
               <ReactQuill theme="snow" onChange={setValue} value={value} />
             </div>
-            <div className="item">
+            <div className="item large">
               <label htmlFor="city">City</label>
               <input id="city" name="city" type="text" />
+            </div>
+            <div className="item">
+              <label htmlFor="type">Type</label>
+              <select name="type">
+                <option value="rent" defaultChecked>
+                  Rent
+                </option>
+                <option value="buy">Buy</option>
+              </select>
             </div>
             <div className="item">
               <label htmlFor="bedroom">Bedroom Number</label>
@@ -107,15 +115,6 @@ function NewPostPage() {
             <div className="item">
               <label htmlFor="longitude">Longitude</label>
               <input id="longitude" name="longitude" type="text" />
-            </div>
-            <div className="item">
-              <label htmlFor="type">Type</label>
-              <select name="type">
-                <option value="rent" defaultChecked>
-                  Rent
-                </option>
-                <option value="buy">Buy</option>
-              </select>
             </div>
             <div className="item">
               <label htmlFor="type">Property</label>
@@ -142,15 +141,6 @@ function NewPostPage() {
               </select>
             </div>
             <div className="item">
-              <label htmlFor="income">Income Policy</label>
-              <input
-                id="income"
-                name="income"
-                type="text"
-                placeholder="Income Policy"
-              />
-            </div>
-            <div className="item">
               <label htmlFor="size">Total Size (m2)</label>
               <input min={0} id="size" name="size" type="number" />
             </div>
@@ -159,7 +149,7 @@ function NewPostPage() {
               <input min={0} id="school" name="school" type="number" />
             </div>
             <div className="item">
-              <label htmlFor="bus">bus</label>
+              <label htmlFor="bus">Bus</label>
               <input min={0} id="bus" name="bus" type="number" />
             </div>
             <div className="item">

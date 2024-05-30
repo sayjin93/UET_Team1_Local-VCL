@@ -39,6 +39,34 @@
       border: none;
     }
 
+    .react-select {
+      &-container {
+        width: 196px;
+
+        @include sm {
+          width: auto;
+        }
+      }
+      &__control {
+        border-color: transparent;
+
+        @include sm {
+          border-radius: 0;
+          border-color: #999;
+        }
+
+        &--is-focused {
+          border-color: #304a85;
+        }
+      }
+      &__input {
+        height: 52px;
+      }
+      &__indicators {
+        display: none;
+      }
+    }
+
     input {
       border: none;
       padding: 0px 10px;
@@ -60,7 +88,6 @@
           width: 200px;
         }
       }
-
       @include sm {
         width: auto;
         &:nth-child(2),
@@ -69,6 +96,12 @@
         }
         padding: 20px;
         border: 1px solid #999;
+      }
+
+      &:focus {
+        &-visible {
+          outline: #304a85 auto 1px;
+        }
       }
     }
 

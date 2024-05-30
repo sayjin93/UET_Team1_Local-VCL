@@ -1,6 +1,10 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
 import "./searchBar.scss";
+
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Select from "react-select";
+
+import apiRequest from "@/lib/apiRequest";
 
 const types = ["buy", "rent"];
 
@@ -12,16 +16,35 @@ function SearchBar() {
     minPrice: 0,
     maxPrice: 0,
   });
+  const [cities, setCities] = useState([]);
   //#endregion
 
   //#region functions
-  const switchType = (val) => {
+  const handleChangeType = (val) => {
     setQuery((prev) => ({ ...prev, type: val }));
   };
-
+  const handleChangeSelect = (newValue, actionMeta) => {
+    if (actionMeta.action === "select-option") {
+      setQuery((prev) => ({ ...prev, city: newValue.value }));
+    }
+  };
   const handleChange = (e) => {
     setQuery((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+  //#endregion
+
+  //#region useEffect
+  useEffect(() => {
+    const fetchCities = async () => {
+      try {
+        const res = await apiRequest("/others/cities");
+        setCities(res.data.cities);
+      } catch (error) {
+        console.error("Failed to fetch cities:", error);
+      }
+    };
+    fetchCities();
+  }, []);
   //#endregion
 
   return (
@@ -30,20 +53,29 @@ function SearchBar() {
         {types.map((type) => (
           <button
             key={type}
-            onClick={() => switchType(type)}
+            onClick={() => handleChangeType(type)}
             className={query.type === type ? "active" : ""}
           >
             {type}
           </button>
         ))}
       </div>
+
       <form>
-        <input
+        <Select
+          className="react-select-container"
+          classNamePrefix="react-select"
+          options={cities}
+          placeholder="City"
+          onChange={handleChangeSelect}
+        />
+
+        {/* <input
           type="text"
           name="city"
           placeholder="City"
           onChange={handleChange}
-        />
+        /> */}
         <input
           type="number"
           name="minPrice"

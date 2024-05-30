@@ -38,7 +38,9 @@ function Navbar() {
         <Link to="/">Home</Link>
         <Link to="/list">List</Link>
         <Link to="/about">About</Link>
-        <Link to="/">Contact</Link>
+        <Link className="disabled" to="/">
+          Contact
+        </Link>
       </div>
       <div className="right">
         {currentUser ? (

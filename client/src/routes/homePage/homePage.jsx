@@ -15,10 +15,10 @@ function HomePage() {
           <h1 className="title">Unlock Your Dream Home with Us.</h1>
           <p>
             Discover the finest properties tailored to your needs, brought to
-            you by Team 1 VCL from the European University of Tirana. Our
-            commitment to excellence ensures that your journey to finding the
-            perfect home is smooth and enjoyable. Trust us to unlock the door to
-            your future.
+            you by Team 1 VCL from the European University of Tirana.
+            <br /> Our commitment to excellence ensures that your journey to
+            finding the perfect home is smooth and enjoyable. Trust us to unlock
+            the door to your future.
           </p>
           <SearchBar />
           <div className="boxes">

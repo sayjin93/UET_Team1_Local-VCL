@@ -1,3 +1,5 @@
+@import "../../responsive.scss";
+
 .filter {
   display: flex;
   flex-direction: column;
@@ -19,17 +21,11 @@
 
     input,
     select {
-      width: 100px;
+      width: 100%;
       padding: 10px;
       border: 1px solid #e0e0e0;
       border-radius: 5px;
       font-size: 14px;
-    }
-  }
-
-  .top {
-    input {
-      width: 100%;
     }
   }
 
@@ -39,12 +35,36 @@
     flex-wrap: wrap;
     gap: 20px;
 
+    @include md {
+      justify-content: initial;
+    }
+
+    .item {
+      width: calc(16.66% - 17px);
+
+      @include md {
+        width: calc(33.33% - 14px);
+      }
+
+      @include sm {
+        width: calc(50% - 15px);
+      }
+    }
+
     button {
-      width: 100px;
+      width: calc(16.66% - 17px);
       padding: 10px;
       border: none;
       cursor: pointer;
       background-color: #fece51;
+
+      @include md {
+        width: calc(33.33% - 14px);
+      }
+
+      @include sm {
+        width: calc(50% - 14px);
+      }
 
       img {
         width: 24px;

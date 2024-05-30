@@ -1,10 +1,13 @@
 import "./filter.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import Select from "react-select";
+import apiRequest from "@/lib/apiRequest";
 
 function Filter() {
   //#region hooks
   const [searchParams, setsearchParams] = useSearchParams();
+  const [cities, setCities] = useState([]);
   //#endregion
 
   //#region states
@@ -19,6 +22,15 @@ function Filter() {
   //#endregion
 
   //#region functions
+  const handleChangeSelect = (newValue, actionMeta) => {
+    if (actionMeta.action === "select-option") {
+      setQuery({
+        ...query,
+        city: newValue.value,
+      });
+    }
+  };
+
   const handleChange = (e) => {
     setQuery({
       ...query,
@@ -37,6 +49,23 @@ function Filter() {
   };
   //#endregion
 
+  //#region useEffect
+  useEffect(() => {
+    const fetchCities = async () => {
+      try {
+        const res = await apiRequest("/others/cities");
+        setCities(res.data.cities);
+      } catch (error) {
+        console.error("Failed to fetch cities:", error);
+      }
+    };
+    fetchCities();
+  }, []);
+  //#endregion
+
+  // Find the selected city object from the cities array
+  const selectedCity = cities.find((city) => city.value === query.city);
+
   return (
     <div className="filter">
       <h1>
@@ -45,13 +74,13 @@ function Filter() {
       <div className="top">
         <div className="item">
           <label htmlFor="city">City</label>
-          <input
-            type="text"
-            id="city"
-            name="city"
+          <Select
+            className="react-select-container"
+            classNamePrefix="react-select"
+            options={cities}
             placeholder="City Location"
-            onChange={handleChange}
-            defaultValue={query.city}
+            value={selectedCity}
+            onChange={handleChangeSelect}
           />
         </div>
       </div>

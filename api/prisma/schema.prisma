@@ -41,7 +41,7 @@ enum Type {
 enum Property {
   apartment
   house
-  condo
+  office
   land
 }
 
@@ -50,7 +50,6 @@ model PostDetail {
   desc       String
   utilities  String?
   pet        String?
-  income     String?
   size       Int?
   school     Int?
   bus        Int?

@@ -19,6 +19,7 @@
     "react-leaflet": "^4.2.1",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.23.1",
+    "react-select": "^5.8.0",
     "react-toastify": "^10.0.5",
     "sass": "^1.71.1",
     "simplebar-react": "^3.2.5",
