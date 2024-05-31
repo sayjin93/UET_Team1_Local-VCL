@@ -8,7 +8,7 @@ const teamMembers = [
   {
     name: "Marina Niklekaj",
     role: "E-Tutor",
-    image: "noavatar.jpg",
+    image: "marina.jpeg",
   },
   {
     name: "Jurgen Kruja",
