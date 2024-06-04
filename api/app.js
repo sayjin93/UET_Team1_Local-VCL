@@ -15,7 +15,17 @@ import messageRoute from "./routes/message.route.js";
 const app = express();
 const port = process.env.PORT || 8800;
 
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+// CORS configuration
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true); // allow requests with no origin, like mobile apps or curl requests
+    return callback(null, true); // allow all origins
+  },
+  credentials: true, // allow credentials
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
