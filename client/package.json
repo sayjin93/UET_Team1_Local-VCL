@@ -16,7 +16,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-leaflet": "^4.2.1",
-    "react-quill": "^2.0.0",
+    "react-quilljs": "^2.0.4",
     "react-router-dom": "^6.23.1",
     "react-select": "^5.8.0",
     "react-toastify": "^10.0.5",
@@ -25,7 +25,7 @@
     "socket.io-client": "^4.7.5",
     "timeago.js": "^4.0.2",
     "use-count-up": "^3.0.1",
-    "zustand": "^4.5.2"
+    "zustand": "^5.0.0-rc.2"
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^5.1.0",

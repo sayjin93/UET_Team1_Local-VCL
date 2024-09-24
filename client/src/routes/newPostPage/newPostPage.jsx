@@ -1,7 +1,9 @@
-import { useState } from "react";
 import "./newPostPage.scss";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+
+import { useState } from "react";
+import { useQuill } from "react-quilljs";
+import "quill/dist/quill.snow.css"; // Add css for snow theme
+
 import apiRequest from "@/lib/apiRequest";
 import UploadWidget from "@/components/uploadWidget/UploadWidget";
 import { useNavigate } from "react-router-dom";
@@ -11,10 +13,13 @@ function NewPostPage() {
   const navigate = useNavigate();
   //#endregion
 
+  //#region refs
+  const { quillRef } = useQuill();
+  //#endregion
+
   //#region state
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [value, setValue] = useState("");
   const [images, setImages] = useState([]);
   //#endregion
 
@@ -44,7 +49,7 @@ function NewPostPage() {
           images: images,
         },
         postDetail: {
-          desc: value,
+          desc: quillRef.current.firstChild.innerHTML,
           utilities: inputs.utilities,
           pet: inputs.pet,
           size: Number(inputs.size),
@@ -85,7 +90,7 @@ function NewPostPage() {
             </div>
             <div className="item description">
               <label htmlFor="desc">Description</label>
-              <ReactQuill theme="snow" onChange={setValue} value={value} />
+              <div ref={quillRef} />
             </div>
             <div className="item large">
               <label htmlFor="city">City</label>
